@@ -16,15 +16,20 @@
 package com.example.lunchtray
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.lunchtray.ui.OrderViewModel
+import com.example.lunchtray.ui.StartOrderScreen
 
 enum class LunchTrayScreen(@StringRes val title: Int) {
     Start(title = R.string.app_name),
@@ -59,6 +64,17 @@ fun LunchTrayApp() {
             navController = navController,
             startDestination = LunchTrayScreen.Start.name,
         ) {
+            composable(route = LunchTrayScreen.Start.name) {
+                StartOrderScreen(
+                    onStartOrderButtonClicked = {
+                        navController.navigate(LunchTrayScreen.Entree.name)
+                    },
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding)
+                )
+            }
+
 
         }
     }
