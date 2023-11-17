@@ -99,11 +99,7 @@ fun LunchTrayApp() {
     Scaffold(
         topBar = {
             // TODO: AppBar
-            LunchTrayAppBar(
-                currentScreenTitle = currentScreen.title,
-                canNavigateBack = navController.previousBackStackEntry != null,
-                navigateUp = { navController.navigateUp() }
-            )
+
 
         }
     ) { innerPadding ->
